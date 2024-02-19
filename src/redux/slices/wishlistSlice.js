@@ -9,9 +9,12 @@ const wishlistSlice = createSlice({
         addTowishlist:(state,action)=>{
             state.push(action.payload)
             
+        },
+        removeFromWishlist:(state,action)=>{
+            return state.filter(item=>item.id!=action.payload)
         }
 
     }
 })
-export const {addTowishlist} = wishlistSlice.actions;
+export const {addTowishlist,removeFromWishlist} = wishlistSlice.actions;
 export default wishlistSlice.reducer

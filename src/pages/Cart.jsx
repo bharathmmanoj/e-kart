@@ -11,10 +11,10 @@ function Cart() {
     if(cartlistArray.length>0){
         for(let i=0; i<cartlistArray.length;i++){
             totalPrice = totalPrice+cartlistArray[i].price;
-        }
-        const handleCheckout = ()=>{
-            alert("your order is successfully placed")
-        }
+        } 
+    }
+    const handleCheckout = ()=>{
+        alert("your order is successfully placed")
     }
     return (
     <div style={{marginTop:"150px"}}>

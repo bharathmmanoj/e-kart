@@ -1,9 +1,11 @@
 import React from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import { removeFromWishlist } from '../redux/slices/wishlistSlice';
 
 function WishList() {
+const dispatch = useDispatch()
   const wishlistArray = useSelector((state)=>state.wishlistReducer)
   console.log("===wishlist array",wishlistArray);
     return (
@@ -22,6 +24,10 @@ function WishList() {
                     <p>{item.description.slice(0,50)}...</p>
                     <p>Price :{item.price}</p>
                     </Card.Text>
+                    <div className='d-flex align-items-center justify-content-between'>
+                            <Button variant="outline-danger" onClick={()=>dispatch(removeFromWishlist(item))}><i class="fa-solid fa-trash"></i></Button>
+                            <Button variant="outline-success"><i class="fa-solid fa-cart-plus"></i></Button>
+                    </div>
                         
                     </Card.Body>
                 </Card>
