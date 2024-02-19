@@ -3,6 +3,7 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { removeFromWishlist } from '../redux/slices/wishlistSlice';
+import { addtoCart } from '../redux/slices/cartSlice';
 
 function WishList() {
 const dispatch = useDispatch()
@@ -25,10 +26,9 @@ const dispatch = useDispatch()
                     <p>Price :{item.price}</p>
                     </Card.Text>
                     <div className='d-flex align-items-center justify-content-between'>
-                            <Button variant="outline-danger" onClick={()=>dispatch(removeFromWishlist(item))}><i class="fa-solid fa-trash"></i></Button>
-                            <Button variant="outline-success"><i class="fa-solid fa-cart-plus"></i></Button>
-                    </div>
-                        
+                            <Button variant="outline-danger" onClick={()=>dispatch(removeFromWishlist(item.id))}><i class="fa-solid fa-trash"></i></Button>
+                            <Button variant="outline-success" onClick={()=>dispatch(addtoCart(item))}><i class="fa-solid fa-cart-plus"></i></Button>
+                    </div>   
                     </Card.Body>
                 </Card>
             </Col>
